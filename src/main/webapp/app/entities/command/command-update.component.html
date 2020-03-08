@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-command-heading" jhiTranslate="libraryApp.command.home.createOrEditLabel">Create or edit a Command</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="libraryApp.command.call" for="field_call">Call</label>
+                    <input type="text" class="form-control" name="call" id="field_call"
+                           formControlName="call"/>
+                    <div *ngIf="editForm.get('call')!.invalid && (editForm.get('call')!.dirty || editForm.get('call')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('call')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="libraryApp.command.inUse" for="field_inUse">In Use</label>
+                    <input type="checkbox" class="form-control" name="inUse" id="field_inUse"
+                           formControlName="inUse"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="libraryApp.command.operator" for="field_operator">Operator</label>
+                    <select class="form-control" id="field_operator" name="operator" formControlName="operator">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="operatorOption.id === editForm.get('operator')!.value?.id ? editForm.get('operator')!.value : operatorOption" *ngFor="let operatorOption of operators; trackBy: trackById">{{ operatorOption.call }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="libraryApp.command.band" for="field_bands">Band</label>
+                    <select class="form-control" id="field_bands" multiple name="bands" formControlName="bands">
+                        <option [ngValue]="getSelected(editForm.get('bands')!.value, bandOption)" *ngFor="let bandOption of bands; trackBy: trackById">{{ bandOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

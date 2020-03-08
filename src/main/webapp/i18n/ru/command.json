@@ -1,0 +1,25 @@
+{
+  "libraryApp": {
+    "command": {
+      "home": {
+        "title": "Commands",
+        "createLabel": "Создать новый Command",
+        "createOrEditLabel": "Создать или отредактировать Command",
+        "notFound": "No Commands found"
+      },
+      "created": "Новый Command создан с идентификатором {{ param }}",
+      "updated": "Command обновлен с идентификатором {{ param }}",
+      "deleted": "Command удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Command {{ id }}?"
+      },
+      "detail": {
+        "title": "Command"
+      },
+      "call": "Call",
+      "inUse": "In Use",
+      "operator": "Operator",
+      "band": "Band"
+    }
+  }
+}
