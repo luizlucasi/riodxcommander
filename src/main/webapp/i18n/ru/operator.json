@@ -1,0 +1,22 @@
+{
+  "libraryApp": {
+    "operator": {
+      "home": {
+        "title": "Operators",
+        "createLabel": "Создать новый Operator",
+        "createOrEditLabel": "Создать или отредактировать Operator",
+        "notFound": "No Operators found"
+      },
+      "created": "Новый Operator создан с идентификатором {{ param }}",
+      "updated": "Operator обновлен с идентификатором {{ param }}",
+      "deleted": "Operator удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Operator"
+      },
+      "call": "Call"
+    }
+  }
+}

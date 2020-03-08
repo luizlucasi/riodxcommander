@@ -1,0 +1,22 @@
+{
+  "libraryApp": {
+    "operator": {
+      "home": {
+        "title": "Operators",
+        "createLabel": "Creeare o nouă entitate Operator",
+        "createOrEditLabel": "Creeare sau editare Operator",
+        "notFound": "No Operators found"
+      },
+      "created": "A fost creată o nouă entitate Operator cu identificatorul {{ param }}",
+      "updated": "Operator cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Operator cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Operator"
+      },
+      "call": "Call"
+    }
+  }
+}

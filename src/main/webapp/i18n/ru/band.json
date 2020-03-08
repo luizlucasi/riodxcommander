@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "band": {
+      "home": {
+        "title": "Bands",
+        "createLabel": "Создать новый Band",
+        "createOrEditLabel": "Создать или отредактировать Band",
+        "notFound": "No Bands found"
+      },
+      "created": "Новый Band создан с идентификатором {{ param }}",
+      "updated": "Band обновлен с идентификатором {{ param }}",
+      "deleted": "Band удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Band {{ id }}?"
+      },
+      "detail": {
+        "title": "Band"
+      },
+      "name": "Name",
+      "bandMeter": "Band Meter",
+      "inUse": "In Use",
+      "commandRunningBand": "Command Running Band",
+      "command": "Command"
+    }
+  }
+}

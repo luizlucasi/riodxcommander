@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="libraryApp.band.home.title">Bands</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-band" [routerLink]="['/band/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="libraryApp.band.home.createLabel">
+            Create a new Band
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bands?.length === 0">
+        <span jhiTranslate="libraryApp.band.home.notFound">No bands found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bands?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.band.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.band.bandMeter">Band Meter</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.band.inUse">In Use</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.band.commandRunningBand">Command Running Band</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let band of bands ;trackBy: trackId">
+                    <td><a [routerLink]="['/band', band.id, 'view']">{{ band.id }}</a></td>
+                    <td>{{ band.name }}</td>
+                    <td jhiTranslate="{{ 'libraryApp.BandMeter.' + band.bandMeter }}">{{ band.bandMeter }}</td>
+                    <td>{{ band.inUse }}</td>
+                    <td>{{ band.commandRunningBand }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/band', band.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/band', band.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(band)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

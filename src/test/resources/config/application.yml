@@ -15,10 +15,10 @@
 
 spring:
   application:
-    name: riodxcommander
+    name: library
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:riodxcommander;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:library;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -57,13 +57,13 @@ spring:
       enabled: false
   task:
     execution:
-      thread-name-prefix: riodxcommander-task-
+      thread-name-prefix: library-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: riodxcommander-scheduling-
+      thread-name-prefix: library-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -81,7 +81,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'riodxcommanderApp'
+    name: 'libraryApp'
   logging:
     # To test json console appender
     use-json-format: true # By default, logs are in Json format
@@ -94,9 +94,12 @@ jhipster:
     from: test@localhost
     base-url: http://127.0.0.1:8080
   security:
-    remember-me:
-      # security key (this key should be unique for your application, and kept secret)
-      key: 90045e3e38e9935d77ca9192722397c261bf07f6639415b480be161f3ef3ebc65641542194c516b1abf88a346e7cbeab8016
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
+        base64-secret: NTNjYTFkOTllMzM1MDk1NDA5NWJkOTRmZjNlOWU0NDlhNGQxNWFiMDllMDQyNGZiYzYwNGUzMmY3OWI1NGM5ODgxNTU2MjAxZjA4YjAzNDhjNTFlNzhlNmNjNzc4OWU4MTgwN2Q0ZDI2ZDNlNTIzNjcxNmI4NTIyMDNjM2QyMTE=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
   metrics:
     logs: # Reports metrics in the logs
       enabled: true

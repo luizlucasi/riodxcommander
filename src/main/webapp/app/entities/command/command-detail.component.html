@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="command">
+            <h2><span jhiTranslate="libraryApp.command.detail.title">Command</span> {{ command.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="libraryApp.command.call">Call</span></dt>
+                <dd>
+                    <span>{{ command.call }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.command.inUse">In Use</span></dt>
+                <dd>
+                    <span>{{ command.inUse }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.command.operator">Operator</span></dt>
+                <dd>
+                    <div *ngIf="command.operator">
+                        <a [routerLink]="['/operator', command.operator?.id, 'view']">{{ command.operator?.call }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.command.band">Band</span></dt>
+                <dd>
+                    <span *ngFor="let band of command.bands; let last = last">
+                        <a [routerLink]="['/band', band?.id, 'view']">{{ band.name }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/command', command.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

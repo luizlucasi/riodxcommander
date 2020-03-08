@@ -1,6 +1,6 @@
 version: '2'
 services:
-  riodxcommander-sonar:
+  library-sonar:
     image: sonarqube:7.9.2-community
     ports:
       - 9001:9000

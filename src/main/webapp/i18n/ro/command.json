@@ -1,0 +1,25 @@
+{
+  "libraryApp": {
+    "command": {
+      "home": {
+        "title": "Commands",
+        "createLabel": "Creeare o nouă entitate Command",
+        "createOrEditLabel": "Creeare sau editare Command",
+        "notFound": "No Commands found"
+      },
+      "created": "A fost creată o nouă entitate Command cu identificatorul {{ param }}",
+      "updated": "Command cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Command cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Command {{ id }}?"
+      },
+      "detail": {
+        "title": "Command"
+      },
+      "call": "Call",
+      "inUse": "In Use",
+      "operator": "Operator",
+      "band": "Band"
+    }
+  }
+}

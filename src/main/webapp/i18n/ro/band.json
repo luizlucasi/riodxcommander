@@ -1,0 +1,26 @@
+{
+  "libraryApp": {
+    "band": {
+      "home": {
+        "title": "Bands",
+        "createLabel": "Creeare o nouă entitate Band",
+        "createOrEditLabel": "Creeare sau editare Band",
+        "notFound": "No Bands found"
+      },
+      "created": "A fost creată o nouă entitate Band cu identificatorul {{ param }}",
+      "updated": "Band cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Band cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Band {{ id }}?"
+      },
+      "detail": {
+        "title": "Band"
+      },
+      "name": "Name",
+      "bandMeter": "Band Meter",
+      "inUse": "In Use",
+      "commandRunningBand": "Command Running Band",
+      "command": "Command"
+    }
+  }
+}
