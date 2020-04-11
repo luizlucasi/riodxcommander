@@ -1,20 +1,4 @@
-application {
-  config {
-    baseName library,
-    applicationType monolith,
-    authenticationType jwt
-    packageName com.sgaraba.library,
-    prodDatabaseType postgresql,
-    cacheProvider hazelcast,
-    buildTool maven,
-    clientFramework angular,
-    useSass true,
-    testFrameworks [protractor],
-	nativeLanguage en,
-    languages [en, ro, ru]
-  }
-  entities *
-}
+
 
 DEFAULT_MIN_LENGTH = 4
 DEFAULT_MAX_LENGTH = 100
@@ -23,43 +7,54 @@ enum BandMeter {
    BAND160, BAND80, BAND40, BAND20, BAND15, BAND10
 }
 
-entity Operator {
-  call String required 
+entity Radio {
+  description String required 
 
 }
 
 entity Command {
-  call String required 
+  nome String required 
   inUse Boolean
 
 }
 
 entity Band {
-    name String
 	
 	bandMeter BandMeter 
 	
 	inUse Boolean 
 	
-	commandRunningBand String 
 
 }
 
+entity Antenna {
+    nome String
+	
+	inUse Boolean 
+
+}
+
+
+
+
 relationship OneToOne {
-  Command{operator(call)} to Operator
+  Command{radio(nome)} to Radio
 }
 
 relationship ManyToMany {
   Command{band(name)} to Band{command}
 }
 
-	
+
+relationship ManyToOne {
+  Band{antenna} to Antenna
+
+}
 
 
 
 
-
-filter Command, Band, Operator
+filter Command, Band, Operator, Antenna
 
 paginate Command with pagination
 
