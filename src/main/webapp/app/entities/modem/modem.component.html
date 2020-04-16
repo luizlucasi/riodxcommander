@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="libraryApp.modem.home.title">Modems</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-modem" [routerLink]="['/modem/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="libraryApp.modem.home.createLabel">
+            Create a new Modem
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="modems?.length === 0">
+        <span jhiTranslate="libraryApp.modem.home.notFound">No modems found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="modems?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.crmEstacaoId">Crm Estacao Id</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.vsatId">Vsat Id</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.vsatUid">Vsat Uid</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.vsatGroup">Vsat Group</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.hub">Hub</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.ipAddress">Ip Address</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.status">Status</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.statusDesc">Status Desc</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.objectOID">Object OID</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.latitude">Latitude</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.longitude">Longitude</span></th>
+                    <th scope="col" ><span jhiTranslate="libraryApp.modem.lanIpAddress">Lan Ip Address</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let modem of modems ;trackBy: trackId">
+                    <td><a [routerLink]="['/modem', modem.id, 'view']">{{ modem.id }}</a></td>
+                    <td>{{ modem.crmEstacaoId }}</td>
+                    <td>{{ modem.vsatId }}</td>
+                    <td>{{ modem.vsatUid }}</td>
+                    <td>{{ modem.vsatGroup }}</td>
+                    <td>{{ modem.hub }}</td>
+                    <td>{{ modem.name }}</td>
+                    <td>{{ modem.ipAddress }}</td>
+                    <td>{{ modem.status }}</td>
+                    <td>{{ modem.statusDesc }}</td>
+                    <td>{{ modem.objectOID }}</td>
+                    <td>{{ modem.latitude }}</td>
+                    <td>{{ modem.longitude }}</td>
+                    <td>{{ modem.lanIpAddress }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/modem', modem.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/modem', modem.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(modem)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
