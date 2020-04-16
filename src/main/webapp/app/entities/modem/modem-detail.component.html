@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="modem">
+            <h2><span jhiTranslate="libraryApp.modem.detail.title">Modem</span> {{ modem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="libraryApp.modem.crmEstacaoId">Crm Estacao Id</span></dt>
+                <dd>
+                    <span>{{ modem.crmEstacaoId }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.vsatId">Vsat Id</span></dt>
+                <dd>
+                    <span>{{ modem.vsatId }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.vsatUid">Vsat Uid</span></dt>
+                <dd>
+                    <span>{{ modem.vsatUid }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.vsatGroup">Vsat Group</span></dt>
+                <dd>
+                    <span>{{ modem.vsatGroup }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.hub">Hub</span></dt>
+                <dd>
+                    <span>{{ modem.hub }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.name">Name</span></dt>
+                <dd>
+                    <span>{{ modem.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.ipAddress">Ip Address</span></dt>
+                <dd>
+                    <span>{{ modem.ipAddress }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.status">Status</span></dt>
+                <dd>
+                    <span>{{ modem.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.statusDesc">Status Desc</span></dt>
+                <dd>
+                    <span>{{ modem.statusDesc }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.objectOID">Object OID</span></dt>
+                <dd>
+                    <span>{{ modem.objectOID }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ modem.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ modem.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="libraryApp.modem.lanIpAddress">Lan Ip Address</span></dt>
+                <dd>
+                    <span>{{ modem.lanIpAddress }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/modem', modem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

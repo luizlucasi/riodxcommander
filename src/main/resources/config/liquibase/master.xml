@@ -17,7 +17,14 @@
     <include file="config/liquibase/changelog/20200308102818_added_entity_Operator.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200308102918_added_entity_Command.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200308103018_added_entity_Band.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143300_added_entity_Modem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143400_added_entity_NotaFiscal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143500_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143600_added_entity_Contrato.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143700_added_entity_Circuito.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200308102918_added_entity_constraints_Command.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143500_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200416143600_added_entity_constraints_Contrato.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

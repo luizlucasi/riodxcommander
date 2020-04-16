@@ -1,0 +1,34 @@
+{
+  "libraryApp": {
+    "modem": {
+      "home": {
+        "title": "Modems",
+        "createLabel": "Creeare o nouă entitate Modem",
+        "createOrEditLabel": "Creeare sau editare Modem",
+        "notFound": "No Modems found"
+      },
+      "created": "A fost creată o nouă entitate Modem cu identificatorul {{ param }}",
+      "updated": "Modem cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Modem cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Modem {{ id }}?"
+      },
+      "detail": {
+        "title": "Modem"
+      },
+      "crmEstacaoId": "Crm Estacao Id",
+      "vsatId": "Vsat Id",
+      "vsatUid": "Vsat Uid",
+      "vsatGroup": "Vsat Group",
+      "hub": "Hub",
+      "name": "Name",
+      "ipAddress": "Ip Address",
+      "status": "Status",
+      "statusDesc": "Status Desc",
+      "objectOID": "Object OID",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "lanIpAddress": "Lan Ip Address"
+    }
+  }
+}
