@@ -1,0 +1,38 @@
+{
+  "name": "Antenna",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inUse",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "bandMeter",
+      "fieldType": "BandMeter",
+      "fieldValues": "BAND160,BAND80,BAND40,BAND20,BAND15,BAND10"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "band",
+      "otherEntityRelationshipName": "antenna",
+      "relationshipName": "band",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200610154457",
+  "entityTableName": "antenna",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

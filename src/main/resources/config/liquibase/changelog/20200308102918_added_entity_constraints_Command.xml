@@ -2,17 +2,17 @@
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
     <!--
         Added the constraints for entity Command.
     -->
     <changeSet id="20200308102918-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="operator_id"
+        <addForeignKeyConstraint baseColumnNames="radio_id"
                                  baseTableName="command"
-                                 constraintName="fk_command_operator_id"
+                                 constraintName="fk_command_radio_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="operator"/>
+                                 referencedTableName="radio"/>
 
         <addForeignKeyConstraint baseColumnNames="command_id"
                                  baseTableName="command_band"

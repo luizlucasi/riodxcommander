@@ -1,23 +1,16 @@
 package com.sgaraba.library.web.rest;
 
 import com.sgaraba.library.domain.Command;
-import com.sgaraba.library.service.CommandService;
+import com.sgaraba.library.repository.CommandRepository;
 import com.sgaraba.library.web.rest.errors.BadRequestAlertException;
-import com.sgaraba.library.service.dto.CommandCriteria;
-import com.sgaraba.library.service.CommandQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +24,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
+@Transactional
 public class CommandResource {
 
     private final Logger log = LoggerFactory.getLogger(CommandResource.class);
@@ -40,13 +34,10 @@ public class CommandResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final CommandService commandService;
+    private final CommandRepository commandRepository;
 
-    private final CommandQueryService commandQueryService;
-
-    public CommandResource(CommandService commandService, CommandQueryService commandQueryService) {
-        this.commandService = commandService;
-        this.commandQueryService = commandQueryService;
+    public CommandResource(CommandRepository commandRepository) {
+        this.commandRepository = commandRepository;
     }
 
     /**
@@ -62,7 +53,7 @@ public class CommandResource {
         if (command.getId() != null) {
             throw new BadRequestAlertException("A new command cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Command result = commandService.save(command);
+        Command result = commandRepository.save(command);
         return ResponseEntity.created(new URI("/api/commands/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -83,7 +74,7 @@ public class CommandResource {
         if (command.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Command result = commandService.save(command);
+        Command result = commandRepository.save(command);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, command.getId().toString()))
             .body(result);
@@ -92,28 +83,13 @@ public class CommandResource {
     /**
      * {@code GET  /commands} : get all the commands.
      *
-     * @param pageable the pagination information.
-     * @param criteria the criteria which the requested entities should match.
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of commands in body.
      */
     @GetMapping("/commands")
-    public ResponseEntity<List<Command>> getAllCommands(CommandCriteria criteria, Pageable pageable) {
-        log.debug("REST request to get Commands by criteria: {}", criteria);
-        Page<Command> page = commandQueryService.findByCriteria(criteria, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-
-    /**
-     * {@code GET  /commands/count} : count all the commands.
-     *
-     * @param criteria the criteria which the requested entities should match.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
-     */
-    @GetMapping("/commands/count")
-    public ResponseEntity<Long> countCommands(CommandCriteria criteria) {
-        log.debug("REST request to count Commands by criteria: {}", criteria);
-        return ResponseEntity.ok().body(commandQueryService.countByCriteria(criteria));
+    public List<Command> getAllCommands(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+        log.debug("REST request to get all Commands");
+        return commandRepository.findAllWithEagerRelationships();
     }
 
     /**
@@ -125,7 +101,7 @@ public class CommandResource {
     @GetMapping("/commands/{id}")
     public ResponseEntity<Command> getCommand(@PathVariable Long id) {
         log.debug("REST request to get Command : {}", id);
-        Optional<Command> command = commandService.findOne(id);
+        Optional<Command> command = commandRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(command);
     }
 
@@ -138,7 +114,7 @@ public class CommandResource {
     @DeleteMapping("/commands/{id}")
     public ResponseEntity<Void> deleteCommand(@PathVariable Long id) {
         log.debug("REST request to delete Command : {}", id);
-        commandService.delete(id);
+        commandRepository.deleteById(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }
