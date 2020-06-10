@@ -17,7 +17,10 @@
     <include file="config/liquibase/changelog/20200308102818_added_entity_Operator.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200308102918_added_entity_Command.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200308103018_added_entity_Band.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200610154157_added_entity_Radio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200610154457_added_entity_Antenna.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200308102918_added_entity_constraints_Command.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200610154457_added_entity_constraints_Antenna.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

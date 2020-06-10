@@ -12,12 +12,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="libraryApp.command.call" for="field_call">Call</label>
-                    <input type="text" class="form-control" name="call" id="field_call"
-                           formControlName="call"/>
-                    <div *ngIf="editForm.get('call')!.invalid && (editForm.get('call')!.dirty || editForm.get('call')!.touched)">
+                    <label class="form-control-label" jhiTranslate="libraryApp.command.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome')!.invalid && (editForm.get('nome')!.dirty || editForm.get('nome')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('call')?.errors?.required" jhiTranslate="entity.validation.required">
+                               *ngIf="editForm.get('nome')?.errors?.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
@@ -30,10 +30,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="libraryApp.command.operator" for="field_operator">Operator</label>
-                    <select class="form-control" id="field_operator" name="operator" formControlName="operator">
+                    <label class="form-control-label" jhiTranslate="libraryApp.command.radio" for="field_radio">Radio</label>
+                    <select class="form-control" id="field_radio" name="radio" formControlName="radio">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="operatorOption.id === editForm.get('operator')!.value?.id ? editForm.get('operator')!.value : operatorOption" *ngFor="let operatorOption of operators; trackBy: trackById">{{ operatorOption.call }}</option>
+                        <option [ngValue]="radioOption.id === editForm.get('radio')!.value?.id ? editForm.get('radio')!.value : radioOption" *ngFor="let radioOption of radios; trackBy: trackById">{{ radioOption.nome }}</option>
                     </select>
                 </div>
 

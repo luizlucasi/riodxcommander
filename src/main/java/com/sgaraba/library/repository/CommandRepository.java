@@ -15,7 +15,7 @@ import java.util.Optional;
  * Spring Data  repository for the Command entity.
  */
 @Repository
-public interface CommandRepository extends JpaRepository<Command, Long>, JpaSpecificationExecutor<Command> {
+public interface CommandRepository extends JpaRepository<Command, Long> {
 
     @Query(value = "select distinct command from Command command left join fetch command.bands",
         countQuery = "select count(distinct command) from Command command")
@@ -26,5 +26,4 @@ public interface CommandRepository extends JpaRepository<Command, Long>, JpaSpec
 
     @Query("select command from Command command left join fetch command.bands where command.id =:id")
     Optional<Command> findOneWithEagerRelationships(@Param("id") Long id);
-
 }

@@ -8,18 +8,18 @@
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="libraryApp.command.call">Call</span></dt>
+                <dt><span jhiTranslate="libraryApp.command.nome">Nome</span></dt>
                 <dd>
-                    <span>{{ command.call }}</span>
+                    <span>{{ command.nome }}</span>
                 </dd>
                 <dt><span jhiTranslate="libraryApp.command.inUse">In Use</span></dt>
                 <dd>
                     <span>{{ command.inUse }}</span>
                 </dd>
-                <dt><span jhiTranslate="libraryApp.command.operator">Operator</span></dt>
+                <dt><span jhiTranslate="libraryApp.command.radio">Radio</span></dt>
                 <dd>
-                    <div *ngIf="command.operator">
-                        <a [routerLink]="['/operator', command.operator?.id, 'view']">{{ command.operator?.call }}</a>
+                    <div *ngIf="command.radio">
+                        <a [routerLink]="['/radio', command.radio?.id, 'view']">{{ command.radio?.nome }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="libraryApp.command.band">Band</span></dt>

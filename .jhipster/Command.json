@@ -1,46 +1,45 @@
 {
-    "name": "Command",
-    "fields": [
-        {
-            "fieldName": "call",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "inUse",
-            "fieldType": "Boolean"
-        }
-    ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "operator",
-            "otherEntityRelationshipName": "command",
-            "relationshipName": "operator",
-            "otherEntityField": "call",
-            "ownerSide": true
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "band",
-            "otherEntityRelationshipName": "command",
-            "relationshipName": "band",
-            "otherEntityField": "name",
-            "ownerSide": true
-        }
-    ],
-    "changelogDate": "20200308102918",
-    "entityTableName": "command",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "jpaMetamodelFiltering": true,
-    "fluentMethods": true,
-    "readOnly": false,
-    "clientRootFolder": "",
-    "applications": [
-        "library"
-    ]
+  "name": "Command",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "inUse",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "radio",
+      "otherEntityRelationshipName": "command",
+      "relationshipName": "radio",
+      "otherEntityField": "nome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "band",
+      "otherEntityRelationshipName": "command",
+      "relationshipName": "band",
+      "otherEntityField": "name",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200308102918",
+  "entityTableName": "command",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "embedded": false
 }

@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "command")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Command implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,24 +26,24 @@ public class Command implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "call", nullable = false)
-    private String call;
+    @Column(name = "nome", nullable = false)
+    private String nome;
 
     @Column(name = "in_use")
     private Boolean inUse;
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Operator operator;
+    private Radio radio;
 
     @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "command_band",
                joinColumns = @JoinColumn(name = "command_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "band_id", referencedColumnName = "id"))
     private Set<Band> bands = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
@@ -52,17 +52,17 @@ public class Command implements Serializable {
         this.id = id;
     }
 
-    public String getCall() {
-        return call;
+    public String getNome() {
+        return nome;
     }
 
-    public Command call(String call) {
-        this.call = call;
+    public Command nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
-    public void setCall(String call) {
-        this.call = call;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Boolean isInUse() {
@@ -78,17 +78,17 @@ public class Command implements Serializable {
         this.inUse = inUse;
     }
 
-    public Operator getOperator() {
-        return operator;
+    public Radio getRadio() {
+        return radio;
     }
 
-    public Command operator(Operator operator) {
-        this.operator = operator;
+    public Command radio(Radio radio) {
+        this.radio = radio;
         return this;
     }
 
-    public void setOperator(Operator operator) {
-        this.operator = operator;
+    public void setRadio(Radio radio) {
+        this.radio = radio;
     }
 
     public Set<Band> getBands() {
@@ -115,7 +115,7 @@ public class Command implements Serializable {
     public void setBands(Set<Band> bands) {
         this.bands = bands;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {
@@ -133,11 +133,12 @@ public class Command implements Serializable {
         return 31;
     }
 
+    // prettier-ignore
     @Override
     public String toString() {
         return "Command{" +
             "id=" + getId() +
-            ", call='" + getCall() + "'" +
+            ", nome='" + getNome() + "'" +
             ", inUse='" + isInUse() + "'" +
             "}";
     }
